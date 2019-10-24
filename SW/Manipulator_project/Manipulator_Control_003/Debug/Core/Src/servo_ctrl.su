@@ -4,8 +4,8 @@ servo_ctrl.c:81:6:servo_stop	16	static
 servo_ctrl.c:87:6:servo_update	16	static
 servo_ctrl.c:133:6:servo_speed_update	24	static
 servo_ctrl.c:155:6:servo_set_angle	24	static
-servo_ctrl.c:187:6:servo_set_speed	24	static
-servo_ctrl.c:205:6:servo_set_direction	16	static
-servo_ctrl.c:210:6:servo_goto	24	static
-servo_ctrl.c:221:6:servo_move	24	static
-servo_ctrl.c:233:5:servo_is_running	16	static
+servo_ctrl.c:191:6:servo_set_speed	24	static
+servo_ctrl.c:209:6:servo_set_direction	16	static
+servo_ctrl.c:214:6:servo_goto	24	static
+servo_ctrl.c:225:6:servo_move	24	static
+servo_ctrl.c:237:5:servo_is_running	16	static

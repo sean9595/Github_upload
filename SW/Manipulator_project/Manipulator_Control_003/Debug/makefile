@@ -37,8 +37,8 @@ Manipulator_Control_003.list \
 all: Manipulator_Control_003.elf secondary-outputs
 
 # Tool invocations
-Manipulator_Control_003.elf: $(OBJS) $(USER_OBJS) C:\Users\ranos\Desktop\Modu_instiute\Embedded\Manipulator_Control_003\STM32H743ZITX_FLASH.ld
-	arm-none-eabi-gcc -o "Manipulator_Control_003.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"C:\Users\ranos\Desktop\Modu_instiute\Embedded\Manipulator_Control_003\STM32H743ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Manipulator_Control_003.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Manipulator_Control_003.elf: $(OBJS) $(USER_OBJS) C:\Users\ranos\Desktop\Github_upload\SW\Manipulator_project\Manipulator_Control_003\STM32H743ZITX_FLASH.ld
+	arm-none-eabi-gcc -o "Manipulator_Control_003.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"C:\Users\ranos\Desktop\Github_upload\SW\Manipulator_project\Manipulator_Control_003\STM32H743ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Manipulator_Control_003.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

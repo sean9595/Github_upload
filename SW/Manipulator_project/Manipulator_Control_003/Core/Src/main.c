@@ -105,17 +105,17 @@ int main(void)
   while (1)
   {
 	  servo_goto(0, 0, 70);
-			 // servo_goto(1, 0, 30);
-			 /* while(1)
+	  servo_goto(1, 0, 30);
+			  while(1)
 			  {
 				  if (!servo_is_running(0))
 				  {
 					  break;
 				  }
-			  }*/
+			  }
 			  HAL_Delay(3000);
-			  servo_goto(0, 1800, 30);
-			  //servo_goto(1, 1800, 70);
+      servo_goto(0, 1800, 30);
+	  servo_goto(1, 1800, 70);
 			  while(1)
 			  {
 				  if (!servo_is_running(0))

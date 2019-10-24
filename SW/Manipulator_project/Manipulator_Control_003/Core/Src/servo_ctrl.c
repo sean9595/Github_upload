@@ -177,6 +177,10 @@ void servo_set_angle(int _servo_num, int _angle)
 	{
 		servo_set_direction(i, CCW);
 	}
+	else
+	{
+		return; //Hard fault issue occurs when the value of .delta is equal to zero.
+	}
 
 	servo[i].total_steps = servo[i].delta / (servo[i].dst_speed - ACC_RATIO * (servo[i].dst_speed - BASE_SPEED));
 	servo[i].acc_steps = ACC_RATIO * servo[i].total_steps;
