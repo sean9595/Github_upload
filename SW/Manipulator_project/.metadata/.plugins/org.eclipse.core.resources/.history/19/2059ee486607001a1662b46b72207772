@@ -11,7 +11,6 @@
 
 #define UART_RX_BUFF_SIZE (256);
 
-uint8_t uart_hal_getchar();
 
 void uart_hal_rx_buffer_init();
 void packet_Receive();
