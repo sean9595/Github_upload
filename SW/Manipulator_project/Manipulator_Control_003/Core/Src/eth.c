@@ -46,7 +46,7 @@ uint8_t Rx_Buff[ETH_RX_DESC_CNT][ETH_MAX_PACKET_SIZE] __attribute__((section(".R
 ETH_TxPacketConfig TxConfig; 
 
 /* USER CODE BEGIN 0 */
-
+#include <string.h> //memset error
 /* USER CODE END 0 */
 
 ETH_HandleTypeDef heth;

@@ -1,0 +1,25 @@
+/*
+ * serial_com.c
+ *
+ *  Created on: Nov. 14, 2019
+ *      Author: Sean Kim
+ *
+ */
+
+#include "usart.h"
+#include "serial_com.h"
+
+
+typedef struct {
+	int cur_angle;
+} serial;
+
+void serial_Init ()
+{
+	HAL_UART_Receive_IT(&huart3, rx_buff_temp, Rx_BuFF_size);
+}
+
+void serial_Data_check ();
+{
+
+}

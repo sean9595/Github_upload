@@ -1,0 +1,15 @@
+/*
+ *  serial_com.h
+ *  Created on: 2019. Nov. 14
+ *  Author: Sean K.
+ *
+ */
+
+#ifndef SERIAL_COM_H_
+#define SERIAL_COM_H_
+
+#define
+
+void serial_init ();
+
+#endif /* SERIAL_COM_H_ */

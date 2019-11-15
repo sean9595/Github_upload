@@ -1,17 +1,17 @@
-22:19:10 **** Incremental Build of configuration Debug for project Manipulator_Control_003 ****
+13:18:26 **** Incremental Build of configuration Debug for project Manipulator_Control_003 ****
 make -j4 all 
-arm-none-eabi-gcc "../Core/Src/servo_ctrl.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32H743xx -DDEBUG -c -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/STM32H7xx_HAL_Driver/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/servo_ctrl.d" -MT"Core/Src/servo_ctrl.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/servo_ctrl.o"
+arm-none-eabi-gcc "../Core/Src/serial_com.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32H743xx -DDEBUG -c -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/STM32H7xx_HAL_Driver/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/serial_com.d" -MT"Core/Src/serial_com.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/serial_com.o"
 arm-none-eabi-gcc -o "Manipulator_Control_003.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\ranos\Desktop\Github_upload\SW\Manipulator_project\Manipulator_Control_003\STM32H743ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Manipulator_Control_003.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: Manipulator_Control_003.elf
  
 arm-none-eabi-objdump -h -S  Manipulator_Control_003.elf  > "Manipulator_Control_003.list"
 arm-none-eabi-size   Manipulator_Control_003.elf 
    text	   data	    bss	    dec	    hex	filename
-  39384	    216	   3192	  42792	   a728	Manipulator_Control_003.elf
+  39364	    216	   4232	  43812	   ab24	Manipulator_Control_003.elf
 Finished building: default.size.stdout
  
 Finished building: Manipulator_Control_003.list
  
 
-22:19:24 Build Finished. 0 errors, 0 warnings. (took 14s.14ms)
+13:18:48 Build Finished. 0 errors, 0 warnings. (took 21s.799ms)
 

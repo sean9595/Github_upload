@@ -29,6 +29,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "servo_ctrl.h"
+#include "serial_com.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -97,33 +98,38 @@ int main(void)
   MX_TIM3_Init();
   MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
-  servo_initialize(0); //
-  /* USER CODE END 2 */
+  uart_hal_rx_buffer_init(); //Uart 수신 링버퍼 초기화
+  serial_Init(); //Uart 수신 대기 상태로 설정.
+  //servo_initialize(1);
+   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  servo_goto(0, 0, 70);
-	  servo_goto(1, 0, 30);
+	  uart_hal_rx_monitor(); //Uart 수신 처리 함수 호출.
+	  //servo_goto(0, 0, 70);
+	 /* servo_goto(1, 0, 30);
 			  while(1)
 			  {
-				  if (!servo_is_running(0))
+				  if (!servo_is_running(1))
 				  {
 					  break;
 				  }
 			  }
 			  HAL_Delay(3000);
-      servo_goto(0, 1800, 30);
+     // servo_goto(0, 1800, 30);
 	  servo_goto(1, 1800, 70);
 			  while(1)
 			  {
-				  if (!servo_is_running(0))
+				  if (!servo_is_running(1))
 				  {
 					  break;
 				  }
 			  }
-			  HAL_Delay(3000);
+			  HAL_Delay(3000);*/
+	 // HAL_UART_Transmit(&huart3, myTxData, 13, 10);
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

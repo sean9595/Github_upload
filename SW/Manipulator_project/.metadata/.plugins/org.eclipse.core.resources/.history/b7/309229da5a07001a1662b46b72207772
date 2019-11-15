@@ -1,0 +1,55 @@
+/*
+ * serial_com.c
+ *
+ *  Created on: Nov. 14, 2019
+ *      Author: Sean Kim
+ *
+ */
+
+#include "usart.h"
+#include "serial_com.h"
+
+/* Ring buffer CODE BEGIN  */
+#define UART_RX_BUFF_SIZE 1024;
+
+typedef struct {
+	//uint8_t buffer [UART_RX_BUFF_SIZE];
+	uint8_t buffer[1024];
+	uint8_t temp;
+	uint8_t rxd;
+	volatile uint16_t input_p;
+	volatile uint16_t output_p;
+} uart_hal_rx_type; //링버퍼 선언 (구조체형태)
+
+/*링버퍼수신변수 선언 및 초기화*/
+uart_hal_rx_type uart_hal_rx;
+
+void uart_hal_rx_buffer_init()
+{
+	uart_hal_rx.input_p = 0;
+	uart_hal_rx.output_p = 0;
+
+}
+
+/* Ring buffer CODE END */
+
+typedef struct {
+	int a;
+} serial;
+
+void serial_Init ()
+{
+	HAL_UART_Receive_IT(&huart3, rx_buff_temp, 1);
+}
+
+void serial_Data_check ();
+{
+	switch()
+
+    case 1:
+
+	case 2:
+
+	case 3:
+
+}

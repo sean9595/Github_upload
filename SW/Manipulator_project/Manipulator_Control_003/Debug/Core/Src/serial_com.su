@@ -1,0 +1,3 @@
+serial_com.c:27:6:uart_hal_rx_buffer_init	4	static
+serial_com.c:36:6:packet_handler	8	static
+serial_com.c:54:6:serial_Init	8	static

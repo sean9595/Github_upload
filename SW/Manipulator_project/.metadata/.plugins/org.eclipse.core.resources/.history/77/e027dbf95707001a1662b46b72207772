@@ -1,0 +1,39 @@
+/*
+ * serial_com.c
+ *
+ *  Created on: Nov. 14, 2019
+ *      Author: Sean Kim
+ *
+ */
+
+#include "usart.h"
+#include "serial_com.h"
+
+#define UART_RX_BUFF_SIZE 1024;
+
+typedef struct {
+	uint8_t buffer[UART_RX_BUFF_SIZE];
+	uint8_t temp;
+	uint8_t rxd;
+	volatile uint16_t input_p;
+	volatile uint16_t output_p;
+};
+
+typedef struct {
+	int cur_angle;
+} serial;
+
+void serial_Init ()
+{
+	HAL_UART_Receive_IT(&huart3, rx_buff_temp, 1);
+}
+
+void serial_Data_check ();
+{
+	case 1:
+
+	case 2:
+
+	case 3:
+
+}
