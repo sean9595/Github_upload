@@ -123,7 +123,7 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef* uartHandle)
 {
     /*링버퍼패킷처리*/
-	packet_Receive();
+	uart_serial_packet_Receive(uartHandle); //이렇게 해줘야 동일한 포인터 가 넣어진다.
 
 }
 /* USER CODE END 1 */

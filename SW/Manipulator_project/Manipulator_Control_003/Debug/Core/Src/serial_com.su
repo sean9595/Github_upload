@@ -1,5 +1,5 @@
-serial_com.c:41:6:uart_hal_rx_buffer_init	4	static
-serial_com.c:52:6:packet_Receive	8	static
-serial_com.c:67:6:serial_Init	8	static
-serial_com.c:72:6:uart_hal_rx_monitor	8	static
-serial_com.c:111:9:uart_hal_getchar	4	static
+serial_com.c:40:6:uart_hal_rx_buffer_init	4	static
+serial_com.c:51:6:packet_Receive	16	static
+serial_com.c:66:6:serial_Init	8	static
+serial_com.c:71:6:uart_hal_rx_monitor	8	static
+serial_com.c:110:9:uart_hal_getchar	4	static

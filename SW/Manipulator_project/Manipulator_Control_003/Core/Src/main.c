@@ -98,8 +98,8 @@ int main(void)
   MX_TIM3_Init();
   MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
-  uart_hal_rx_buffer_init(); //UART 수신 링버퍼 초기화
-  serial_Init(); //UART 수신 대기 상태로 설정.
+  uart_serial_rx_buffer_init(); //UART 수신 링버퍼 초기화
+  uart_serial_Init(); //UART 수신 대기 상태로 설정.
   //servo_initialize(1);
    /* USER CODE END 2 */
 
@@ -107,7 +107,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  uart_hal_rx_monitor(); //UART 수신 처리 함수 호출. 이와 같이 함수를 이용하면 인터럽트를 루틴 밖에서 수신 처리를 하므로 다른 우선순위가 높은 인터럽트에 의해 수신 처리르 못하게 될 가능성을 없앨 수 있다.
+	  uart_serial_rx_monitor(); //UART 수신 처리 함수 호출. 이와 같이 함수를 이용하면 인터럽트를 루틴 밖에서 수신 처리를 하므로 다른 우선순위가 높은 인터럽트에 의해 수신 처리르 못하게 될 가능성을 없앨 수 있다.
 	  //servo_goto(0, 0, 70);
 	 /* servo_goto(1, 0, 30);
 			  while(1)
