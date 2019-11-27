@@ -128,7 +128,6 @@ int main(void)
 				  }
 			  }
 			  HAL_Delay(3000);*/
-	 // HAL_UART_Transmit(&huart3, myTxData, 13, 10);
 
     /* USER CODE END WHILE */
 

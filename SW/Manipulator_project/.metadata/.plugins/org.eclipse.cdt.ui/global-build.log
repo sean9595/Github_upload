@@ -35,3 +35,211 @@ Finished building: default.size.stdout
  
 Finished building: Manipulator_Control_003.list
  
+14:11:05 **** Incremental Build of configuration Debug for project Manipulator_Control_003 ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32H743xx -DDEBUG -c -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/STM32H7xx_HAL_Driver/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/serial_com.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32H743xx -DDEBUG -c -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/STM32H7xx_HAL_Driver/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/serial_com.d" -MT"Core/Src/serial_com.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/serial_com.o"
+arm-none-eabi-gcc "../Core/Src/usart.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32H743xx -DDEBUG -c -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/STM32H7xx_HAL_Driver/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/usart.d" -MT"Core/Src/usart.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/usart.o"
+../Core/Src/serial_com.c: In function 'uart_serial_packet_Receive':
+../Core/Src/serial_com.c:71:35: warning: passing argument 2 of 'HAL_UART_Receive_IT' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+      HAL_UART_Receive_IT(&huart3, &uart_rx.temp, 1);
+                                   ^
+In file included from ../Core/Inc/stm32h7xx_hal_conf.h:401:0,
+                 from ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Inc/usart.h:27,
+                 from ../Core/Src/serial_com.c:10:
+../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h:1554:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'volatile uint8_t * {aka volatile unsigned char *}'
+ HAL_StatusTypeDef HAL_UART_Receive_IT(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+                   ^~~~~~~~~~~~~~~~~~~
+../Core/Src/serial_com.c: In function 'uart_serial_Init':
+../Core/Src/serial_com.c:77:31: warning: passing argument 2 of 'HAL_UART_Receive_IT' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  HAL_UART_Receive_IT(&huart3, &uart_rx.temp, 1);
+                               ^
+In file included from ../Core/Inc/stm32h7xx_hal_conf.h:401:0,
+                 from ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Inc/usart.h:27,
+                 from ../Core/Src/serial_com.c:10:
+../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h:1554:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'volatile uint8_t * {aka volatile unsigned char *}'
+ HAL_StatusTypeDef HAL_UART_Receive_IT(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+                   ^~~~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "Manipulator_Control_003.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\ranos\Desktop\Github_upload\SW\Manipulator_project\Manipulator_Control_003\STM32H743ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Manipulator_Control_003.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Manipulator_Control_003.elf
+ 
+arm-none-eabi-objdump -h -S  Manipulator_Control_003.elf  > "Manipulator_Control_003.list"
+arm-none-eabi-size   Manipulator_Control_003.elf 
+   text	   data	    bss	    dec	    hex	filename
+  39812	    224	   5256	  45292	   b0ec	Manipulator_Control_003.elf
+Finished building: default.size.stdout
+ 
+Finished building: Manipulator_Control_003.list
+ 
+14:40:55 **** Incremental Build of configuration Debug for project Manipulator_Control_003 ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/serial_com.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32H743xx -DDEBUG -c -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/STM32H7xx_HAL_Driver/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/serial_com.d" -MT"Core/Src/serial_com.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/serial_com.o"
+arm-none-eabi-gcc -o "Manipulator_Control_003.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\ranos\Desktop\Github_upload\SW\Manipulator_project\Manipulator_Control_003\STM32H743ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Manipulator_Control_003.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Manipulator_Control_003.elf
+ 
+arm-none-eabi-objdump -h -S  Manipulator_Control_003.elf  > "Manipulator_Control_003.list"
+arm-none-eabi-size   Manipulator_Control_003.elf 
+   text	   data	    bss	    dec	    hex	filename
+  39804	    224	   5256	  45284	   b0e4	Manipulator_Control_003.elf
+Finished building: default.size.stdout
+ 
+Finished building: Manipulator_Control_003.list
+ 
+14:52:55 **** Incremental Build of configuration Debug for project Manipulator_Control_003 ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/serial_com.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32H743xx -DDEBUG -c -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/STM32H7xx_HAL_Driver/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/serial_com.d" -MT"Core/Src/serial_com.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/serial_com.o"
+../Core/Src/serial_com.c: In function 'uart_serial_rx_monitor':
+../Core/Src/serial_com.c:117:24: warning: suggest parentheses around comparison in operand of '|' [-Wparentheses]
+    else if(uart_rx.nxt != STX|ETX)
+            ~~~~~~~~~~~~^~~~~~
+arm-none-eabi-gcc -o "Manipulator_Control_003.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\ranos\Desktop\Github_upload\SW\Manipulator_project\Manipulator_Control_003\STM32H743ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Manipulator_Control_003.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Manipulator_Control_003.elf
+ 
+arm-none-eabi-objdump -h -S  Manipulator_Control_003.elf  > "Manipulator_Control_003.list"
+arm-none-eabi-size   Manipulator_Control_003.elf 
+   text	   data	    bss	    dec	    hex	filename
+  39860	    224	   5256	  45340	   b11c	Manipulator_Control_003.elf
+Finished building: default.size.stdout
+ 
+Finished building: Manipulator_Control_003.list
+ 
+15:04:58 **** Incremental Build of configuration Debug for project Manipulator_Control_003 ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/serial_com.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32H743xx -DDEBUG -c -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/STM32H7xx_HAL_Driver/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/serial_com.d" -MT"Core/Src/serial_com.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/serial_com.o"
+arm-none-eabi-gcc -o "Manipulator_Control_003.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\ranos\Desktop\Github_upload\SW\Manipulator_project\Manipulator_Control_003\STM32H743ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Manipulator_Control_003.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Manipulator_Control_003.elf
+ 
+arm-none-eabi-objdump -h -S  Manipulator_Control_003.elf  > "Manipulator_Control_003.list"
+arm-none-eabi-size   Manipulator_Control_003.elf 
+   text	   data	    bss	    dec	    hex	filename
+  39828	    224	   5256	  45308	   b0fc	Manipulator_Control_003.elf
+Finished building: default.size.stdout
+ 
+Finished building: Manipulator_Control_003.list
+ 
+15:14:07 **** Incremental Build of configuration Debug for project Manipulator_Control_003 ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/serial_com.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32H743xx -DDEBUG -c -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/STM32H7xx_HAL_Driver/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/serial_com.d" -MT"Core/Src/serial_com.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/serial_com.o"
+arm-none-eabi-gcc -o "Manipulator_Control_003.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\ranos\Desktop\Github_upload\SW\Manipulator_project\Manipulator_Control_003\STM32H743ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Manipulator_Control_003.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Manipulator_Control_003.elf
+ 
+arm-none-eabi-objdump -h -S  Manipulator_Control_003.elf  > "Manipulator_Control_003.list"
+arm-none-eabi-size   Manipulator_Control_003.elf 
+   text	   data	    bss	    dec	    hex	filename
+  39828	    224	   5256	  45308	   b0fc	Manipulator_Control_003.elf
+Finished building: default.size.stdout
+ 
+Finished building: Manipulator_Control_003.list
+ 
+16:09:30 **** Incremental Build of configuration Debug for project Manipulator_Control_003 ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32H743xx -DDEBUG -c -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/STM32H7xx_HAL_Driver/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/serial_com.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32H743xx -DDEBUG -c -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/STM32H7xx_HAL_Driver/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/serial_com.d" -MT"Core/Src/serial_com.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/serial_com.o"
+arm-none-eabi-gcc "../Core/Src/usart.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32H743xx -DDEBUG -c -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/STM32H7xx_HAL_Driver/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/usart.d" -MT"Core/Src/usart.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/usart.o"
+../Core/Src/serial_com.c:20:20: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+ uint8_t velo_set = 0x100;
+                    ^~~~~
+../Core/Src/serial_com.c:21:20: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+ uint8_t posi_set = 0x101;
+                    ^~~~~
+../Core/Src/serial_com.c:22:24: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+ uint8_t mov_dist_set = 0x102;
+                        ^~~~~
+../Core/Src/serial_com.c:23:26: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+ uint8_t ques_curr_velo = 0x200;
+                          ^~~~~
+../Core/Src/serial_com.c:24:26: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+ uint8_t ques_curr_posi = 0x201;
+                          ^~~~~
+arm-none-eabi-gcc -o "Manipulator_Control_003.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\ranos\Desktop\Github_upload\SW\Manipulator_project\Manipulator_Control_003\STM32H743ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Manipulator_Control_003.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Manipulator_Control_003.elf
+ 
+arm-none-eabi-objdump -h -S  Manipulator_Control_003.elf  > "Manipulator_Control_003.list"
+arm-none-eabi-size   Manipulator_Control_003.elf 
+   text	   data	    bss	    dec	    hex	filename
+  39812	    220	   5260	  45292	   b0ec	Manipulator_Control_003.elf
+Finished building: default.size.stdout
+ 
+Finished building: Manipulator_Control_003.list
+ 
+16:15:46 **** Incremental Build of configuration Debug for project Manipulator_Control_003 ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/serial_com.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32H743xx -DDEBUG -c -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/STM32H7xx_HAL_Driver/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/serial_com.d" -MT"Core/Src/serial_com.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/serial_com.o"
+arm-none-eabi-gcc -o "Manipulator_Control_003.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\ranos\Desktop\Github_upload\SW\Manipulator_project\Manipulator_Control_003\STM32H743ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Manipulator_Control_003.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Manipulator_Control_003.elf
+ 
+arm-none-eabi-objdump -h -S  Manipulator_Control_003.elf  > "Manipulator_Control_003.list"
+arm-none-eabi-size   Manipulator_Control_003.elf 
+   text	   data	    bss	    dec	    hex	filename
+  39812	    220	   5260	  45292	   b0ec	Manipulator_Control_003.elf
+Finished building: default.size.stdout
+ 
+Finished building: Manipulator_Control_003.list
+ 
+21:11:04 **** Incremental Build of configuration Debug for project Manipulator_Control_003 ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/serial_com.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32H743xx -DDEBUG -c -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/STM32H7xx_HAL_Driver/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/serial_com.d" -MT"Core/Src/serial_com.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/serial_com.o"
+arm-none-eabi-gcc -o "Manipulator_Control_003.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\ranos\Desktop\Github_upload\SW\Manipulator_project\Manipulator_Control_003\STM32H743ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Manipulator_Control_003.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Manipulator_Control_003.elf
+ 
+arm-none-eabi-objdump -h -S  Manipulator_Control_003.elf  > "Manipulator_Control_003.list"
+arm-none-eabi-size   Manipulator_Control_003.elf 
+   text	   data	    bss	    dec	    hex	filename
+  39772	    220	   5252	  45244	   b0bc	Manipulator_Control_003.elf
+Finished building: default.size.stdout
+ 
+Finished building: Manipulator_Control_003.list
+ 
+21:27:03 **** Incremental Build of configuration Debug for project Manipulator_Control_003 ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/serial_com.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32H743xx -DDEBUG -c -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/STM32H7xx_HAL_Driver/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/serial_com.d" -MT"Core/Src/serial_com.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/serial_com.o"
+arm-none-eabi-gcc -o "Manipulator_Control_003.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\ranos\Desktop\Github_upload\SW\Manipulator_project\Manipulator_Control_003\STM32H743ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Manipulator_Control_003.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Manipulator_Control_003.elf
+ 
+arm-none-eabi-objdump -h -S  Manipulator_Control_003.elf  > "Manipulator_Control_003.list"
+arm-none-eabi-size   Manipulator_Control_003.elf 
+   text	   data	    bss	    dec	    hex	filename
+  39780	    220	   5252	  45252	   b0c4	Manipulator_Control_003.elf
+Finished building: default.size.stdout
+ 
+Finished building: Manipulator_Control_003.list
+ 
+21:31:02 **** Incremental Build of configuration Debug for project Manipulator_Control_003 ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/serial_com.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32H743xx -DDEBUG -c -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/STM32H7xx_HAL_Driver/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/serial_com.d" -MT"Core/Src/serial_com.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/serial_com.o"
+arm-none-eabi-gcc -o "Manipulator_Control_003.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\ranos\Desktop\Github_upload\SW\Manipulator_project\Manipulator_Control_003\STM32H743ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Manipulator_Control_003.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Manipulator_Control_003.elf
+ 
+arm-none-eabi-objdump -h -S  Manipulator_Control_003.elf  > "Manipulator_Control_003.list"
+arm-none-eabi-size   Manipulator_Control_003.elf 
+   text	   data	    bss	    dec	    hex	filename
+  39772	    220	   5252	  45244	   b0bc	Manipulator_Control_003.elf
+Finished building: default.size.stdout
+ 
+Finished building: Manipulator_Control_003.list
+ 
+21:36:21 **** Incremental Build of configuration Debug for project Manipulator_Control_003 ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/serial_com.c" -mcpu=cortex-m7 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32H743xx -DDEBUG -c -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/STM32H7xx_HAL_Driver/Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/serial_com.d" -MT"Core/Src/serial_com.o" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "Core/Src/serial_com.o"
+arm-none-eabi-gcc -o "Manipulator_Control_003.elf" @"objects.list"   -mcpu=cortex-m7 -T"C:\Users\ranos\Desktop\Github_upload\SW\Manipulator_project\Manipulator_Control_003\STM32H743ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Manipulator_Control_003.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Manipulator_Control_003.elf
+ 
+arm-none-eabi-objdump -h -S  Manipulator_Control_003.elf  > "Manipulator_Control_003.list"
+arm-none-eabi-size   Manipulator_Control_003.elf 
+   text	   data	    bss	    dec	    hex	filename
+  39780	    220	   5252	  45252	   b0c4	Manipulator_Control_003.elf
+Finished building: default.size.stdout
+ 
+Finished building: Manipulator_Control_003.list
+ 
+21:41:01 **** Incremental Build of configuration Debug for project Manipulator_Control_003 ****
+make -j4 all 
+arm-none-eabi-size   Manipulator_Control_003.elf 
+   text	   data	    bss	    dec	    hex	filename
+  39780	    220	   5252	  45252	   b0c4	Manipulator_Control_003.elf
+Finished building: default.size.stdout
+ 

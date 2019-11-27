@@ -2,6 +2,7 @@
  * serial_com.c
  *
  *  Created on: Nov. 14, 2019
+ *   Edited on: Nov. 22, 2019
  *      Author: Sean Kim
  *
  */
@@ -11,16 +12,16 @@
 
 //UART_HandleTypeDef* uartHandle; //이렇게 선언을 하면 안된다.
 
-uint16_t DLE = 0x10;
-uint16_t STX = 0x02;
-uint16_t ETX = 0x03;
+uint8_t DLE = 0x10;
+uint8_t STX = 0x02;
+uint8_t ETX = 0x03;
 
 /*Operation code set*/
-uint16_t velo_set = 0x100;
-uint16_t posi_set = 0x101;
-uint16_t mov_dist_set = 0x102;
-uint16_t ques_curr_velo = 0x200;
-uint16_t ques_curr_posi = 0x201;
+uint8_t velo_set = 100;
+uint8_t posi_set = 101;
+uint8_t mov_dist_set = 102;
+uint8_t ques_curr_velo = 200;
+uint8_t ques_curr_posi = 201;
 
 
 
@@ -29,9 +30,11 @@ typedef struct {
 	uint8_t buffer_01 [UART_RX_BUFF_SIZE_01]; //수신 데이터 단순 저장용(1024개의 1byte짜리 데이터가 저장된다.)
 	uint8_t buffer_02 [UART_RX_BUFF_SIZE_02]; //수신 데이터 중에서 유의미한 데이터만 저장하는 버퍼
 
-	volatile uint8_t temp; //수신 이후 바로 이 변수에 저장됨.
-	volatile uint8_t rxd;  //
-    volatile uint8_t pre_scnd; //
+	uint8_t temp; //수신 이후 바로 이 변수에 저장됨.
+	volatile uint8_t rxd_01;  //
+	volatile uint8_t rxd_02;
+	//volatile uint8_t pre_scnd; //
+	volatile uint8_t nxt; //
 
 	/*pointer 변수는 그 값이 유동적인 변수이므로 volatile로 선언하여 변수의 최적화를 하지 않도록 한다(실행시간감소목적).*/
 	volatile uint16_t str_p_01; //현재 수신받은 데이터의 버퍼 내의 위치를 뜻함. store pointer
@@ -75,16 +78,18 @@ void uart_serial_Init()
 }
 
 /**/
-uint8_t uart_serial_rx_check()
+uint8_t uart_serial_rx_check_01()
 {
-	if(uart_rx.str_p_01 == uart_rx.scn_p_01)
+	if(uart_rx.scn_p_01 >= uart_rx.str_p_01 -1) //데이터를 받음과 동시에 main.c의 while 루프가 실행하므로 nxt에 값을 넣으려면 2개 차이가 있어야 한다.
 	{
 		return 0; //모니터링을 하지 않게 한다.
 	}
 
-	uart_rx.buffer_01[uart_rx.scn_p_01-1] = uart_rx.pre_scnd; //이전의 데이터를 처리하기 위함
+	//uart_rx.pre_scnd = uart_rx.buffer_01[uart_rx.scn_p_01-1]; //이전의 데이터를 처리하기 위함
 
-	uart_rx.rxd = uart_rx.buffer_01[uart_rx.scn_p_01++]; //처리 이후에 포인터의 값이 1 상승(postfix).
+	uart_rx.rxd_01 = uart_rx.buffer_01[uart_rx.scn_p_01++]; //처리 이후에 포인터의 값이 1 상승(postfix).
+
+	uart_rx.nxt = uart_rx.buffer_01[uart_rx.scn_p_01]; //이후의 데이터
 
 	if(uart_rx.scn_p_01 >= UART_RX_BUFF_SIZE_01)
 	{
@@ -96,46 +101,98 @@ uint8_t uart_serial_rx_check()
 
 void uart_serial_rx_monitor() //수신받은 데이터를 가공하는 작업을 해주는 함수
 {
-	while (uart_serial_rx_check() != 0)
+	while (uart_serial_rx_check_01() != 0)
 	{
-		if(uart_rx.rxd == DLE)
+		if(uart_rx.rxd_01 == DLE)
 		{
-          break;
+         // break; //이렇게 하면 infinite loop를 탈출하게 되므로 안된다.
+			if(uart_rx.nxt == STX)
+			{
+				//uart_serial_rx_save_Init();
+				uart_rx.scn_p_01 += 1;
+			}
+			else if(uart_rx.nxt == ETX)
+			{
+				//uart_serial_rx_save_Term();
+				uart_rx.scn_p_01 += 1;
+
+			}
+			else if(uart_rx.nxt == DLE)
+			{
+				uart_serial_rx_save();
+				uart_rx.scn_p_01 += 1;
+			}
+			else
+			{
+				uart_serial_rx_save(); //데이터 값이므로
+			}
 		}
 
-		if(uart_rx.rxd == STX)
+		else
 		{
-			if(uart_rx.pre_scnd == DLE)
-			{
-                //start of data
-				break;
-			}
-
-			else if(uart_rx.pre_scnd != DLE)
-			{
-				//rxd에 담긴 데이터는 그냥 데이터
-			}
+			uart_serial_rx_save();
 		}
 
-		if(uart_rx.rxd == ETX)
-		{
-			if(uart_rx.pre_scnd == DLE)
-			{
-			    //End of data
-			}
-
-			else if(uart_rx.pre_scnd != DLE)
-			{
-				//rxd에 담긴 데이터는 그냥 데이터
-			}
-		}
 
 
 	}
+	//uart_serial_rx_process(); //위에서 가공한 데이터를 처리
+
+}
+
+void uart_serial_rx_save()
+{
+	uart_rx.buffer_02[uart_rx.str_p_02++] = uart_rx.rxd_01;
+}
+
+
+/*가공한 데이터를 처리하는 함수들*/
+uint8_t uart_serial_rx_check_02()
+{
+	if(uart_rx.str_p_02 == uart_rx.scn_p_02)
+	{
+		return 0; //모니터링을 하지 않게 한다.
+	}
+
+	//uart_rx.rxd_02 = uart_rx.buffer_02[uart_rx.scn_p_02++]; //처리 이후에 포인터의 값이 1 상승(postfix).
+
+	if(uart_rx.scn_p_02 >= UART_RX_BUFF_SIZE_02)
+	{
+		uart_rx.scn_p_02 = 0;
+	}
+
+	return 1; //모니터링을 하게 한다.
 }
 
 void uart_serial_rx_process() //가공된 데이터를 처리하는 함수
 {
+	while (uart_serial_rx_check_02() != 0)
+		{
+			if(uart_rx.rxd_02 == velo_set)
+			{
 
+			}
+
+			if(uart_rx.rxd_02 == posi_set)
+			{
+
+			}
+
+			if(uart_rx.rxd_02 == mov_dist_set)
+			{
+
+			}
+
+			if(uart_rx.rxd_02 == ques_curr_velo)
+			{
+
+			}
+
+			if(uart_rx.rxd_02 == ques_curr_posi)
+			{
+
+			}
+
+	}
 }
 
